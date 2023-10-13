@@ -17,7 +17,7 @@
    * Visualization Technique
   
 
-# The App has been deployed on **Heroko platform. A live version can be found under the following link [view app](https://wca-rana-e4512fa06463.herokuapp.com/)
+# The App has been deployed on Heroko platform. A live version can be found under the following link [view app](https://wca-rana-e4512fa06463.herokuapp.com/)
    
   
   
