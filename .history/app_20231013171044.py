@@ -81,24 +81,26 @@ else:
         ax.pie(emoji_df["count"], labels=emoji_df["emoji"], autopct="%0.2f")
         st.pyplot(fig)
 st.title("User Activity Heatmap")
-
-
 user_activity = helper.activity_heatmap(selected_user, df)
-st.dataframe(user_activity)
-fig, ax = plt.subplots(figsize=(16, 8))
-# plt.figure(figsize=(14, 8))
-ax = sns.heatmap(user_activity, annot=True, linecolor="blue", linewidths=0.5)
+fig, ax = plt.subplots()
+plt.figure(figsize=(14, 8))
+ax = sns.heatmap(
+    user_activity,
+    annot=True,
+    linewidth=0.01,
+    linecolor="blue",
+)
 st.pyplot(fig)
 st.write("# Month-Year Timeline")
 fig, ax = plt.subplots()
 timeline = helper.get_timeline(selected_user, df)
 ax.plot(timeline["month-year"], timeline["msg"])
-plt.xticks(rotation=70)
+plt.xticks(rotation=90)
 plt.xlabel("Month-Year")
 plt.ylabel("Number of Msg sent")
 st.pyplot(fig)
 st.write("# Daily timeline")
-fig, ax = plt.subplots(figsize=(16, 16))
+fig, ax = plt.subplots()
 daily_timeline = helper.daily_timeline(selected_user, df)
 ax.plot(daily_timeline["only-date"], daily_timeline["msg"])
 plt.xticks(rotation=90)

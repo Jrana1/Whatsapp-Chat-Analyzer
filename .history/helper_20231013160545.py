@@ -185,7 +185,7 @@ def daily_timeline(user, df):
 def hour_dis(user, df):
     if user != "Overall":
         df = df[df["user"] == user]
-    bin_edges = [0, 12, 18, 23]  # Bins for 'before noon', 'after noon', and 'evening'
+    bin_edges = [0, 12, 18, 24]  # Bins for 'before noon', 'after noon', and 'evening'
     bin_labels = ["Vormittag", "Nachmittag", "Am Abend"]
 
     # Categorize the 'hour' column into bins
@@ -215,12 +215,3 @@ def get_busy_day(user, df):
         .reset_index()
         .sort_values(by="msg", ascending=False)
     )
-
-
-def activity_heatmap(user, df):
-    if user != "Overall":
-        df = df[df["user"] == user]
-    ht = df.pivot_table(
-        index="day-name", columns="period", values="msg", aggfunc="count"
-    ).fillna(0)
-    return ht

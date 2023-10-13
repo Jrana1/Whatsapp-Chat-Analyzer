@@ -215,12 +215,3 @@ def get_busy_day(user, df):
         .reset_index()
         .sort_values(by="msg", ascending=False)
     )
-
-
-def activity_heatmap(user, df):
-    if user != "Overall":
-        df = df[df["user"] == user]
-    ht = df.pivot_table(
-        index="day-name", columns="period", values="msg", aggfunc="count"
-    ).fillna(0)
-    return ht

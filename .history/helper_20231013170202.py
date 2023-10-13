@@ -218,8 +218,6 @@ def get_busy_day(user, df):
 
 
 def activity_heatmap(user, df):
-    if user != "Overall":
-        df = df[df["user"] == user]
     ht = df.pivot_table(
         index="day-name", columns="period", values="msg", aggfunc="count"
     ).fillna(0)

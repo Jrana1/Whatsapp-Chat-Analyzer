@@ -56,13 +56,5 @@ def preprocessing(data):
     df["minute"] = df["msg_date"].dt.minute
     df["monthNumerical"] = df["msg_date"].dt.month
     df["day-name"] = df["msg_date"].dt.day_name()
-    period = []
-    for hour in df["hour"]:
-        if hour == 23:
-            period.append(str(hour) + "-" + str("00"))
-        elif hour == 0:
-            period.append(str("00") + "-" + str(hour + 1))
-        else:
-            period.append(str(hour) + "-" + str(hour + 1))
-    df["period"] = period
+
     return df

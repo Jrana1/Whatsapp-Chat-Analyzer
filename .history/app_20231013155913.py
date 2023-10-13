@@ -2,7 +2,6 @@ import streamlit as st
 import preprocessing
 import helper
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 st.title("Whatsapp Chat Analyzer")
 
@@ -80,25 +79,16 @@ else:
         fig, ax = plt.subplots()
         ax.pie(emoji_df["count"], labels=emoji_df["emoji"], autopct="%0.2f")
         st.pyplot(fig)
-st.title("User Activity Heatmap")
-
-
-user_activity = helper.activity_heatmap(selected_user, df)
-st.dataframe(user_activity)
-fig, ax = plt.subplots(figsize=(16, 8))
-# plt.figure(figsize=(14, 8))
-ax = sns.heatmap(user_activity, annot=True, linecolor="blue", linewidths=0.5)
-st.pyplot(fig)
 st.write("# Month-Year Timeline")
 fig, ax = plt.subplots()
 timeline = helper.get_timeline(selected_user, df)
 ax.plot(timeline["month-year"], timeline["msg"])
-plt.xticks(rotation=70)
+plt.xticks(rotation=90)
 plt.xlabel("Month-Year")
 plt.ylabel("Number of Msg sent")
 st.pyplot(fig)
 st.write("# Daily timeline")
-fig, ax = plt.subplots(figsize=(16, 16))
+fig, ax = plt.subplots()
 daily_timeline = helper.daily_timeline(selected_user, df)
 ax.plot(daily_timeline["only-date"], daily_timeline["msg"])
 plt.xticks(rotation=90)
@@ -121,21 +111,10 @@ plt.xlabel("Time of Day")
 plt.ylabel("Count of Msg sent")
 plt.xticks(rotation=60)
 st.pyplot(fig)
-st.title("Activity Level (Month & Day)")
+st.title("Activity Level based on Month and Day")
 col1, col2 = st.columns(2)
 with col1:
-    monthly_activity = helper.get_busy_month(selected_user, df)
+    monthly_activity = helper.get_busy_month(user, df)
     fig, ax = plt.subplots()
-    ax.bar(monthly_activity["month"], monthly_activity["msg"], color="green")
-    plt.xlabel("Months")
-    plt.ylabel("Number of msgs")
-    plt.xticks(rotation=60)
-    st.pyplot(fig)
-with col2:
-    monthly_activity = helper.get_busy_day(selected_user, df)
-    fig, ax = plt.subplots()
-    ax.bar(monthly_activity["day-name"], monthly_activity["msg"], color="orange")
-    plt.xlabel("Days")
-    plt.ylabel("Number of msgs")
-    plt.xticks(rotation=60)
+    ax.bar(monthly_activity["month"], monthly_activity["msg"])
     st.pyplot(fig)
