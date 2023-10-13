@@ -8,7 +8,13 @@
    * numpy
    * re
    * URLExtract
-  
+# User Instruction
+   ## in order to analyse your own chat history
+    * click on user/grop name >
+    * Export Chat >
+    * without media >
+    * upload _chat.txt 
+    * see insights..
 # Programming Language
    * Python
 # Methodology of Data Science used  
