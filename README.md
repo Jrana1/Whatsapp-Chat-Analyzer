@@ -15,6 +15,8 @@
    * Basic NLP(for text preprocessing using Regular expression)
    * Exploratory Data Analysis
    * Visualization Technique
+  
+</br>
 # The App has been deployed on **Heroko platform. A live version can be found under the following link
 [view app](https://wca-rana-e4512fa06463.herokuapp.com/)
    
